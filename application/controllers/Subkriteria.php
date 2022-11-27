@@ -49,7 +49,8 @@ class Subkriteria extends CI_Controller
 				'id_kriteria'		=> $this->input->post('id_kriteria', TRUE),
 				'nama_subkriteria'	=> $this->input->post('nama_subkriteria', TRUE),
 				'taget'				=> $this->input->post('taget', TRUE),
-				'tipe'				=> $this->input->post('tipe', TRUE)
+				'tipe'				=> $this->input->post('tipe', TRUE),
+				'keterangan'		=> $this->input->post('keterangan', TRUE)
 			];
 
 			$this->Subkriteria->tambah($dataTambah);
@@ -83,7 +84,8 @@ class Subkriteria extends CI_Controller
 					'id_kriteria'		=> $this->input->post('id_kriteria', TRUE),
 					'nama_subkriteria'	=> $this->input->post('nama_subkriteria', TRUE),
 					'taget'				=> $this->input->post('taget', TRUE),
-					'tipe'				=> $this->input->post('tipe', TRUE)
+					'tipe'				=> $this->input->post('tipe', TRUE),
+					'keterangan'		=> $this->input->post('keterangan', TRUE)
 				];
 
 				$this->Subkriteria->ubah($id, $dataUbah);
@@ -164,6 +166,15 @@ class Subkriteria extends CI_Controller
 			'required|trim',
 			[
 				'required' => 'Tipe tidak boleh kosong'
+			]
+		);
+
+		$this->form_validation->set_rules(
+			'keterangan',
+			'Keterangan',
+			'required|trim',
+			[
+				'required' => 'Keterangan tidak boleh kosong'
 			]
 		);
 	}

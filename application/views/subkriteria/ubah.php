@@ -80,6 +80,13 @@
                                             <?= form_error('tipe', '<small class="text-danger">', '</small>') ?>
                                         </div>
                                     </div>
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="keterangan">Keterangan</label>
+                                            <textarea class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan"><?= set_value('keterangan') ? set_value('keterangan') : $subkriteria->keterangan ?></textarea>
+                                            <?= form_error('keterangan', '<small class="text-danger">', '</small>') ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer text-end">
