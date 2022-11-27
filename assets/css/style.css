@@ -26,8 +26,10 @@
     font-size: 20px!important;
 }
 
-.btn-danger:focus {
-    box-shadow: 0 0 0 0.25rem rgba(219, 86, 86, .5);
+.btn:hover,
+.btn:active,
+.btn:focus {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 }
 
 .markdown>table thead th,
@@ -135,4 +137,11 @@ table.dataTable thead>tr>th.sorting:after {
     .navbar-vertical.navbar-expand-lg .navbar-nav {
         flex-grow: 0;
     }
+}
+
+.card-footer {
+    padding: 1rem 1.5rem;
+    color: inherit;
+    background-color: #f8fafc;
+    border-top: 1px solid #e6e7e9;
 }
