@@ -149,3 +149,20 @@ table.dataTable thead>tr>th.sorting:after {
     background-color: #f8fafc;
     border-top: 1px solid #e6e7e9;
 }
+
+.card-tabs .nav-tabs .nav-link {
+    background: #f8fafc;
+    border: 1px solid #e6e7e9;
+}
+
+.card-tabs .nav-tabs .nav-link.active {
+    border-bottom-color: transparent;
+}
+
+.nav-tabs .nav-link {
+    margin-bottom: calc(-1 * 1px);
+    background: 0 0;
+    border: 1px solid transparent;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}

@@ -29,7 +29,15 @@ class ModelSubkriteria extends CI_Model
     public function satuData($id)
     {
         $this->db->join('kriteria', 'kriteria.id_kriteria=subkriteria.id_kriteria');
-        $this->db->where('id_subkriteria', $id);
+        $this->db->where('subkriteria.id_subkriteria', $id);
+        return $this->db->get_where($this->table)->row_object();
+    }
+
+    public function dataTertinggi($kriteria, $nama_subkriteria)
+    {
+        $this->db->select_max('target');
+        $this->db->where('id_kriteria', $kriteria);
+        $this->db->where('nama_subkriteria', $nama_subkriteria);
         return $this->db->get_where($this->table)->row_object();
     }
 

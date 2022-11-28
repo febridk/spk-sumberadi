@@ -10,11 +10,17 @@ class ModelPenilaian extends CI_Model
         $this->table = 'penilaian';
     }
 
-    public function semua()
+    public function semua($kriteria = null, $alternatif = null)
     {
         $this->db->join('alternatif', 'alternatif.id_alternatif=penilaian.id_alternatif');
         $this->db->join('kriteria', 'kriteria.id_kriteria=penilaian.id_kriteria');
         $this->db->join('subkriteria', 'subkriteria.id_subkriteria=penilaian.id_subkriteria');
+        if ($kriteria != null) {
+            $this->db->where('penilaian.id_kriteria', $kriteria);
+        }
+        if ($alternatif != null) {
+            $this->db->where('penilaian.id_alternatif', $alternatif);
+        }
         $this->db->order_by('penilaian.id_penilaian', 'ASC');
         return $this->db->get_where($this->table)->result_array();
     }

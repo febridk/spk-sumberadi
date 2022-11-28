@@ -5,6 +5,7 @@ class Akun extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+
 		// periksa sesi aktif
 		if (!getSession()) {
 			$this->session->set_flashdata(

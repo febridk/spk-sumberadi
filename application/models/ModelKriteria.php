@@ -15,9 +15,14 @@ class ModelKriteria extends CI_Model
         return $this->db->get_where($this->table)->result_array();
     }
 
-    public function satuData($id)
+    public function satuData($id = null, $nama = null)
     {
-        $this->db->where('id_kriteria', $id);
+        if ($id != null) {
+            $this->db->where('id_kriteria', $id);
+        }
+        if ($nama != null) {
+            $this->db->where('nama_kriteria', $nama);
+        }
         return $this->db->get_where($this->table)->row_object();
     }
 
