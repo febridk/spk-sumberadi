@@ -1,4 +1,7 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+$no = 1;
+?>
 
 <!doctype html>
 <html lang="en">
@@ -30,14 +33,62 @@
             </div>
             <div class="page-body">
                 <div class="container-xl">
-                    <div class="row row-deck row-cards">
-                        <div class="col-sm-6 col-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><?= $namaHalaman ?></h3>
+                            <div class="card-actions">
+                                <a href="<?= current_url() ?>/tambah" class="btn">
+                                    <i class="ti ti-plus me-2"></i>
+                                    Tambah
+                                </a>
+                            </div>
                         </div>
-                        <div class="col-sm-6 col-lg-3">
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
+                        <div class="table-responsive">
+                            <table class="table table-vcenter card-table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Alternatif</th>
+                                        <th>Kriteria</th>
+                                        <th>Sub Kriteria</th>
+                                        <th>Keetrangan</th>
+                                        <th class="text-center">Nilai</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if (count($dataPenilaian) > 0) { ?>
+                                        <?php foreach ($dataPenilaian as $data) { ?>
+                                            <?php $id = $data['id_penilaian']; ?>
+
+                                            <tr>
+                                                <td><?= $no++ ?></td>
+                                                <td><?= $data['nama_alternatif'] ?></td>
+                                                <td><?= $data['nama_kriteria'] ?></td>
+                                                <td><?= $data['nama_subkriteria'] ?></td>
+                                                <td><?= $data['keterangan'] ?></td>
+                                                <td class="text-center"><?= $data['target'] ?></td>
+                                                <td>
+                                                    <div class="d-flex gap-2">
+                                                        <a class="btn btn-outline-info" href="<?= current_url() ?>/ubah/<?= $id ?>">
+                                                            <i class="ti ti-pencil me-2"></i>Ubah
+                                                        </a>
+                                                        <a class="btn btn-outline-danger" href="#" data-bs-toggle="modal" data-bs-target="#hapus-<?= $id ?>">
+                                                            <i class="ti ti-trash me-2"></i>Hapus
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <?php include(VIEWPATH . 'komponen/modalhapus.php') ?>
+                                        <?php } ?>
+                                    <?php } else { ?>
+                                        <tr>
+                                            <td colspan="7" class="py-3">Data tidak tersedia.</td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -56,6 +56,16 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url() ?>alternatif">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <div class="ti ti-list fs-2"></div>
+                        </span>
+                        <span class="nav-link-title">
+                            Alternatif
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>kriteria">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <div class="ti ti-file fs-2"></div>
@@ -72,16 +82,6 @@
                         </span>
                         <span class="nav-link-title">
                             Sub Kriteria
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>alternatif">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <div class="ti ti-list fs-2"></div>
-                        </span>
-                        <span class="nav-link-title">
-                            Alternatif
                         </span>
                     </a>
                 </li>

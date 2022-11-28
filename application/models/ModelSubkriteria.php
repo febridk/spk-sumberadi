@@ -10,9 +10,19 @@ class ModelSubkriteria extends CI_Model
         $this->table = 'subkriteria';
     }
 
-    public function semua()
+    public function semua($kriteria = null, $nama_subkriteria = null, $distinct = false)
     {
         $this->db->join('kriteria', 'kriteria.id_kriteria=subkriteria.id_kriteria');
+        if ($kriteria != null) {
+            $this->db->where('subkriteria.id_kriteria', $kriteria);
+        }
+        if ($nama_subkriteria != null) {
+            $this->db->where('subkriteria.nama_subkriteria', $nama_subkriteria);
+        }
+        if ($distinct == true) {
+            $this->db->order_by('subkriteria.id_subkriteria', 'ASC');
+            $this->db->group_by('subkriteria.nama_subkriteria');
+        }
         return $this->db->get_where($this->table)->result_array();
     }
 

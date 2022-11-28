@@ -50,6 +50,7 @@ $no = 1;
                                         <th>No</th>
                                         <th>Nama Kriteria</th>
                                         <th>Nama Sub Kriteria</th>
+                                        <th>Keterangan</th>
                                         <th class="text-center">Target</th>
                                         <th>Tipe</th>
                                         <th>Aksi</th>
@@ -64,7 +65,8 @@ $no = 1;
                                                 <td><?= $no++ ?></td>
                                                 <td><?= $data['nama_kriteria'] ?></td>
                                                 <td><?= $data['nama_subkriteria'] ?></td>
-                                                <td class="text-center"><?= $data['taget'] ?></td>
+                                                <td><?= $data['keterangan'] ?></td>
+                                                <td class="text-center"><?= $data['target'] ?></td>
                                                 <td><?= ucfirst($data['tipe']) ?></td>
                                                 <td>
                                                     <div class="d-flex gap-2">
@@ -82,7 +84,7 @@ $no = 1;
                                         <?php } ?>
                                     <?php } else { ?>
                                         <tr>
-                                            <td colspan="6" class="py-3">Data tidak tersedia.</td>
+                                            <td colspan="7" class="py-3">Data tidak tersedia.</td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
