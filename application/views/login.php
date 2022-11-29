@@ -12,7 +12,7 @@
         <div class="container-tight py-4">
             <div class="text-center mb-4">
                 <a href="<?= base_url() ?>" class="navbar-brand navbar-brand-autodark">
-                    <img src="<?= base_url() ?>assets/static/logo.svg" height="36" alt="logo">
+                    <img src="<?= base_url() ?>assets/static/sleman.jpg" height="36" alt="logo">
                 </a>
             </div>
             <form class="card card-md" action="<?= base_url() ?>login" method="POST" autocomplete="off">

@@ -177,3 +177,11 @@ table.dataTable thead>tr>th.sorting:after {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
+
+.theme-dark .navbar-brand-autodark {
+    filter: unset;
+}
+
+a:hover {
+    text-decoration: none;
+}
