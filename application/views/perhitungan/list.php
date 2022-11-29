@@ -177,8 +177,6 @@
                                                             <?php } ?>
                                                         <?php } ?>
                                                     </tr>
-                                                    <tr>
-                                                    </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php foreach ($dataAlternatif as $perhitunganGAP) { ?>
@@ -200,13 +198,82 @@
                             <div id="perhitungan-nilai-total" class="card tab-pane" role="tabpanel">
                                 <div class="card-body">
                                     <p>Rumus Perhitungan Total = (x)%.NCF(i,s,p) + (x)%.NSF(i,s,p)</p>
+
+                                    <?php $no = 1; ?>
+                                    <?php foreach ($dataNilaiAkhir as $namaKriteria => $dataAlternatif) { ?>
+                                        <h4><?= $no++ ?>. Aspek <?= $namaKriteria ?></h4>
+
+                                        <div class="table-responsive mb-4">
+                                            <table class="table table-vcenter table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center" style="width: 75px;">No</th>
+                                                        <th style="width: 300px;">Alternatif</th>
+                                                        <?php foreach (semuaSubKriteria($namaKriteria) as $subkriteria) { ?>
+                                                            <?php if ($subkriteria['tipe'] == 'core') { ?>
+                                                                <th style="width: 200px;" class="text-center"><span class="text-indigo"><?= ucwords($subkriteria['tipe']) ?> Factor</span></th>
+                                                            <?php } else { ?>
+                                                                <th style="width: 200px;" class="text-center"><span class="text-yellow"><?= ucwords($subkriteria['tipe']) ?> Factor</span></th>
+                                                            <?php } ?>
+                                                        <?php } ?>
+                                                        <th class="text-center">Nilai Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php foreach ($dataAlternatif as $perhitunganGAP) { ?>
+                                                        <tr>
+                                                            <td class="text-center"><?= $perhitunganGAP['no'] ?></td>
+                                                            <td><?= $perhitunganGAP['nama_alternatif'] ?></td>
+                                                            <?php foreach ($perhitunganGAP['nilai'] as $nilai) { ?>
+                                                                <td class="text-center"><?= $nilai['bobot'] ?></td>
+                                                            <?php } ?>
+                                                            <td class="text-center"><?= $perhitunganGAP['nilai'][0]['nilai_core'] + $perhitunganGAP['nilai'][1]['nilai_secondary'] ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
 
                             <div id="penentuan-ranking" class="card tab-pane" role="tabpanel">
                                 <div class="card-body">
-                                    <div class="card-title">Penentuan Ranking</div>
+                                    <p>Rumus Perhitungan Penentuan Ranking = (x)%.Ni + (x)%.Ns + (x)%.Np </p>
 
+                                    <div class="table-responsive mb-4">
+                                        <table class="table table-vcenter table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center" style="width: 75px;">No</th>
+                                                    <th style="width: 300px;">Alternatif</th>
+                                                    <?php foreach (semuaKriteria() as $kriteria) { ?>
+                                                        <th style="width: 150px;" class="text-center"><?= ucwords($kriteria['nama_kriteria']) ?></th>
+                                                    <?php } ?>
+                                                    <th class="text-center">Nilai Akhir</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($dataRanking['nilai'] as $ranking) { ?>
+                                                    <tr>
+                                                        <td class="text-center"><?= $ranking['no'] ?></td>
+                                                        <td><?= $ranking['nama_alternatif'] ?></td>
+                                                        <?php foreach ($ranking['kriteria'] as $nilai) { ?>
+                                                            <td class="text-center"><?= $nilai['nilai_total'] ?></td>
+                                                        <?php } ?>
+                                                        <td class="text-center"><?= $ranking['nilai_akhir'] ?></td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <ul>
+                                        <li>Nama Alternatif : <?= $dataRanking['tertinggi']->nama_alternatif ?></li>
+                                        <li>Nilai Terbesar : <?= $dataRanking['tertinggi']->nilai ?></li>
+                                    </ul>
+
+                                    <p>Maka kandikat berdasarkan besarnya nilai berkesempatan untuk mendapatkan rekomendasi kelayakan peminjaman dana adalah <b><?= $dataRanking['tertinggi']->nama_alternatif ?></b></p>
                                 </div>
                             </div>
                         </div>

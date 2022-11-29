@@ -23,6 +23,7 @@ class Perhitungan extends CI_Controller
 		$this->load->model('ModelKriteria', 'Kriteria');
 		$this->load->model('ModelSubkriteria', 'Subkriteria');
 		$this->load->model('ModelPenilaian', 'Penilaian');
+		$this->load->model('ModelHasil', 'Hasil');
 	}
 
 	public function index()
@@ -32,7 +33,9 @@ class Perhitungan extends CI_Controller
 			'dataBobot'				=> $this->Bobot->semua(),
 			'dataPerhitunganGAP'	=> $this->perhitungan_gap(),
 			'dataPembobotan'		=> $this->pembobotan(),
-			'dataPengelompokkan'	=> $this->pengelompokkan()
+			'dataPengelompokkan'	=> $this->pengelompokkan(),
+			'dataNilaiAkhir'		=> $this->perhitungan_nilai_akhir(),
+			'dataRanking'			=> $this->perhitungan_ranking()
 		];
 
 		$this->load->view('perhitungan/list', $data);
@@ -171,5 +174,130 @@ class Perhitungan extends CI_Controller
 		}
 
 		return $pembobotan;
+	}
+
+	private function perhitungan_nilai_akhir()
+	{
+		$hasilPerhitungan = [];
+
+		$dataKriteria = $this->Kriteria->semua();
+		$dataAlternatif = $this->Alternatif->semua();
+
+		foreach ($dataKriteria as $kriteria) {
+			$no = 1;
+			$idKriteria = $kriteria['id_kriteria'];
+			$namaKriteria = $kriteria['nama_kriteria'];
+			$bobotCore = $kriteria['bobot_core'];
+			$bobotSecondary = $kriteria['bobot_secondary'];
+
+			foreach ($dataAlternatif as $alternatif) {
+				$nilai = [];
+				$idAlternatif = $alternatif['id_alternatif'];
+				$namaAlternatif = $alternatif['nama_alternatif'];
+
+				$dataPenilaian = $this->Penilaian->semua($idKriteria, $idAlternatif);
+
+				foreach ($dataPenilaian as $penilaian) {
+					$idPenilaian = $penilaian['id_penilaian'];
+					$tipeSubkriteria = $penilaian['tipe'];
+
+					if ($tipeSubkriteria == 'core') {
+						$nilaiCore = round($penilaian['nilai'] * ($bobotCore / 100), 2);
+
+						$nilai[] = [
+							'bobot'				=> $penilaian['nilai'],
+							'nilai_core'		=> $nilaiCore,
+							'nilai_secondary'	=> NULL
+						];
+
+						// menyimpan data nilai core ke penilaian
+						$this->Penilaian->ubah($idPenilaian, ['nilai_core' => $nilaiCore]);
+					} else {
+						$nilaiSecondary = round($penilaian['nilai'] * ($bobotSecondary / 100), 2);
+
+						$nilai[] = [
+							'bobot'				=> $penilaian['nilai'],
+							'nilai_core'		=> NULL,
+							'nilai_secondary'	=> $nilaiSecondary
+						];
+
+						// menyimpan data nilai secondary ke penilaian
+						$this->Penilaian->ubah($idPenilaian, ['nilai_secondary' => $nilaiSecondary]);
+					}
+				}
+
+				$hasilPerhitungan[$namaKriteria][] = [
+					'no' => $no++,
+					'nama_alternatif' => $namaAlternatif,
+					'nilai' => $nilai
+				];
+			}
+		}
+
+		return $hasilPerhitungan;
+	}
+
+	private function perhitungan_ranking()
+	{
+		$hasilPerhitungan = [];
+
+		$dataKriteria = $this->Kriteria->semua();
+		$dataAlternatif = $this->Alternatif->semua();
+
+		$no = 1;
+		foreach ($dataAlternatif as $alternatif) {
+			$nilaiAkhir = 0;
+			$nilaiKriteria = [];
+			$idAlternatif = $alternatif['id_alternatif'];
+			$namaAlternatif = $alternatif['nama_alternatif'];
+
+			foreach ($dataKriteria as $kriteria) {
+				$idKriteria = $kriteria['id_kriteria'];
+				$prosentase = $kriteria['prosentase_kriteria'];
+
+				$dataPenilaian = $this->Penilaian->semua($idKriteria, $idAlternatif);
+
+				$nilaiTotal = round($dataPenilaian[0]['nilai_core'] +  $dataPenilaian[1]['nilai_secondary'], 2);
+				$nilaiAkhir = round($nilaiTotal * ($prosentase / 100), 2);
+
+				$nilaiKriteria[] = [
+					'nilai_total' => $nilaiTotal,
+					'nilai_akhir' => $nilaiAkhir
+				];
+			}
+
+			$nilaiAkhir = round($nilaiKriteria[0]['nilai_akhir'] + $nilaiKriteria[1]['nilai_akhir'] + $nilaiKriteria[2]['nilai_akhir'], 2);
+
+			// menyimpan data rangking ke database
+			$dataHasil = [
+				'id_alternatif'	=> $idAlternatif,
+				'nilai'			=> $nilaiAkhir
+			];
+
+			$periksaHasil = $this->Hasil->satuData(null, $idAlternatif);
+
+			if ($periksaHasil) {
+				$idHasil = $periksaHasil->id_hasil;
+				$this->Hasil->ubah($idHasil, $dataHasil);
+			} else {
+				$this->Hasil->tambah($dataHasil);
+			}
+
+			$hasilPerhitungan[] = [
+				'no'				=> $no++,
+				'nama_alternatif'	=> $namaAlternatif,
+				'kriteria'			=> $nilaiKriteria,
+				'nilai_akhir'		=> $nilaiAkhir,
+			];
+		}
+
+		$dataTertinggi = $this->Hasil->dataTertinggi();
+
+		$ranking = [
+			'nilai'		=> $hasilPerhitungan,
+			'tertinggi' => $dataTertinggi
+		];
+
+		return $ranking;
 	}
 }

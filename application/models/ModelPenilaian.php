@@ -10,7 +10,7 @@ class ModelPenilaian extends CI_Model
         $this->table = 'penilaian';
     }
 
-    public function semua($kriteria = null, $alternatif = null)
+    public function semua($kriteria = null, $alternatif = null, $subkriteria = null)
     {
         $this->db->join('alternatif', 'alternatif.id_alternatif=penilaian.id_alternatif');
         $this->db->join('kriteria', 'kriteria.id_kriteria=penilaian.id_kriteria');
@@ -21,6 +21,9 @@ class ModelPenilaian extends CI_Model
         }
         if ($alternatif != null) {
             $this->db->where('penilaian.id_alternatif', $alternatif);
+        }
+        if ($subkriteria != null) {
+            $this->db->where('penilaian.id_subkriteria', $subkriteria);
         }
         $this->db->order_by('penilaian.id_penilaian', 'ASC');
         return $this->db->get_where($this->table)->result_array();

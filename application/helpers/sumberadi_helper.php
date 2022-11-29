@@ -11,6 +11,14 @@ function getSession()
     }
 }
 
+function semuaKriteria()
+{
+    $app = get_instance();
+    $app->load->model('ModelKriteria', 'Kriteria');
+
+    return $app->Kriteria->semua();
+}
+
 function semuaSubKriteria($namakriteria)
 {
     $app = get_instance();
