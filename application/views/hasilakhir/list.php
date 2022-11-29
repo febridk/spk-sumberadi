@@ -36,6 +36,12 @@ $no = 1;
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title"><?= $namaHalaman ?></h3>
+                            <div class="card-actions">
+                                <a href="<?= current_url() ?>/cetak" class="btn">
+                                    <i class="ti ti-printer me-2"></i>
+                                    Cetak
+                                </a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive mb-4">

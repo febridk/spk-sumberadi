@@ -27,7 +27,6 @@ class Login extends CI_Controller
             $this->load->view('login', $data);
         } else {
             // memproses login pengguna
-
             $username = $this->input->post('username', true);
             $password = $this->input->post('password', true);
 
