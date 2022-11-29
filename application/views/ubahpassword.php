@@ -38,19 +38,19 @@
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label for="password_lama" class="form-label">Password Lama</label>
-                                    <input type="text" id="password_lama" class="form-control" name="password_lama" placeholder="Masukkan password lama" value="<?= set_value('password_lama') ?>">
+                                    <input type="text" id="password_lama" class="form-control" name="password_lama" placeholder="Masukkan password lama" autocomplete="off" value="<?= set_value('password_lama') ?>">
                                     <?= form_error('password_lama', '<small class="text-danger">', '</small>') ?>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="password_baru" class="form-label">Password Baru</label>
-                                    <input type="text" id="password_baru" class="form-control" name="password_baru" placeholder="Masukkan password baru" value="<?= set_value('password_baru') ?>">
+                                    <input type="text" id="password_baru" class="form-control" name="password_baru" placeholder="Masukkan password baru" autocomplete="off" value="<?= set_value('password_baru') ?>">
                                     <?= form_error('password_baru', '<small class="text-danger">', '</small>') ?>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="konfirmasi_password" class="form-label">Konfirmasi Password Baru</label>
-                                    <input type="text" id="konfirmasi_password" class="form-control" name="konfirmasi_password" placeholder="Masukkan konfirmasi password" value="<?= set_value('konfirmasi_password') ?>">
+                                    <input type="text" id="konfirmasi_password" class="form-control" name="konfirmasi_password" placeholder="Masukkan konfirmasi password" autocomplete="off" value="<?= set_value('konfirmasi_password') ?>">
                                     <?= form_error('konfirmasi_password', '<small class="text-danger">', '</small>') ?>
                                 </div>
                             </div>

@@ -44,11 +44,11 @@ class Akun extends CI_Controller
 			$periksaPassword = password_verify($passwordLama, getSession()->password);
 
 			if ($periksaPassword) {
-				$data = [
+				$dataUbah = [
 					'password' => password_hash($passwordBaru, PASSWORD_DEFAULT)
 				];
 
-				$this->Pengguna->ubah(getSession()->id_pengguna, $data);
+				$this->Pengguna->ubah(getSession()->id_pengguna, $dataUbah);
 
 				// untuk menghapus sesi
 				$this->session->unset_userdata('username');

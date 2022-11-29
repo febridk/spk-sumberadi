@@ -32,9 +32,9 @@
                 <div class="container-xl">
                     <div class="card">
                         <div class="card-header justify-content-end flex-row-reverse gap-3">
-                            <h3 class="card-title">Tambah <?= $namaHalaman ?></h3>
+                            <h3 class="card-title">Ubah <?= $namaHalaman ?></h3>
                             <div class="card-actions ms-0">
-                                <a href="<?= base_url() ?>subkriteria" class="btn">
+                                <a href="<?= base_url() ?>pengguna" class="btn">
                                     <i class="ti ti-chevron-left me-2"></i>
                                     Kembali
                                 </a>
@@ -43,48 +43,36 @@
                         <form action="<?= current_url() ?>" method="post">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label class="form-label" for="nama_subkriteria">Nama Sub Kriteria</label>
-                                            <input type="text" class="form-control" name="nama_subkriteria" id="nama_subkriteria" value="<?= set_value('nama_subkriteria') ?>" placeholder="Nama Sub Kriteria">
-                                            <?= form_error('nama_subkriteria', '<small class="text-danger">', '</small>') ?>
+                                            <label class="form-label" for="nama_pengguna">Nama Pengguna</label>
+                                            <input type="text" class="form-control" name="nama_pengguna" id="nama_pengguna" value="<?= set_value('nama_pengguna') ? set_value('nama_pengguna') : $pengguna->nama_pengguna ?>" placeholder="Nama Pengguna">
+                                            <?= form_error('nama_pengguna', '<small class="text-danger">', '</small>') ?>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label class="form-label" for="id_kriteria">Nama Kriteria</label>
-                                            <select class="form-control" name="id_kriteria" id="id_kriteria">
-                                                <option value="">Pilih Kriteria</option>
-                                                <?php foreach ($dataKriteria as $data) { ?>
-                                                    <option value="<?= $data['id_kriteria'] ?>" <?= set_value('id_kriteria') == $data['id_kriteria'] ? 'selected' : '' ?>><?= $data['nama_kriteria'] ?></option>
-                                                <?php } ?>
-                                            </select>
-                                            <?= form_error('id_kriteria', '<small class="text-danger">', '</small>') ?>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="taget">Target</label>
-                                            <input type="number" class="form-control" name="taget" id="taget" min="1" value="<?= set_value('taget') ?>" placeholder="Target">
-                                            <?= form_error('taget', '<small class="text-danger">', '</small>') ?>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="tipe">Tipe</label>
-                                            <select class="form-control" name="tipe" id="tipe">
-                                                <option value="">Pilih Tipe</option>
-                                                <option value="core" <?= set_value('tipe') == 'core' ? 'selected' : '' ?>>Core</option>
-                                                <option value="secondary" <?= set_value('tipe') == 'secondary' ? 'selected' : '' ?>>Secondary</option>
-                                            </select>
-                                            <?= form_error('tipe', '<small class="text-danger">', '</small>') ?>
+                                            <label class="form-label" for="username">Username</label>
+                                            <input type="text" class="form-control" name="username" id="username" min="1" value="<?= set_value('username') ? set_value('username') : $pengguna->username ?>" placeholder="Username">
+                                            <?= form_error('username', '<small class="text-danger">', '</small>') ?>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="mb-3">
-                                            <label class="form-label" for="keterangan">Keterangan</label>
-                                            <textarea class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan"><?= set_value('keterangan') ?></textarea>
-                                            <?= form_error('keterangan', '<small class="text-danger">', '</small>') ?>
+                                            <label class="form-label" for="password">Password</label>
+                                            <input type="text" class="form-control" name="password" id="password" value="<?= set_value('password') ?>" placeholder="Password">
+                                            <?= form_error('password', '<small class="text-danger">', '</small>') ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="level">Level</label>
+                                            <select class="form-control" name="level" id="level">
+                                                <option value="">Pilih Level</option>
+                                                <option value="Karyawan" <?= (set_value('level') ? set_value('level') : $pengguna->level) == 'Karyawan' ? 'selected' : '' ?>>Karyawan</option>
+                                                <option value="Kepala Dukuh" <?= (set_value('level') ? set_value('level') : $pengguna->level) == 'Kepala Dukuh' ? 'selected' : '' ?>>Kepala Dukuh</option>
+                                            </select>
+                                            <?= form_error('level', '<small class="text-danger">', '</small>') ?>
                                         </div>
                                     </div>
                                 </div>

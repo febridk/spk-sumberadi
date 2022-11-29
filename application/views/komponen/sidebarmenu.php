@@ -121,6 +121,16 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url() ?>pengguna">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <div class="ti ti-user fs-2"></div>
+                        </span>
+                        <span class="nav-link-title">
+                            Pengguna
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>akun/ubahpassword">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <div class="ti ti-lock fs-2"></div>

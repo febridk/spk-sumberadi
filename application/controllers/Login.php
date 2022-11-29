@@ -100,11 +100,11 @@ class Login extends CI_Controller
         $this->form_validation->set_rules(
             'password',
             'Password',
-            'required|min_length[6]|max_length[12]|trim',
+            'required|min_length[6]|max_length[16]|trim',
             [
                 'required' => 'Password tidak boleh kosong',
                 'min_length' => 'Password minimal 6 huruf',
-                'max_length' => 'Password maksimal 12 huruf'
+                'max_length' => 'Password maksimal 16 huruf'
             ]
         );
     }

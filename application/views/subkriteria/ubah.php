@@ -73,7 +73,7 @@
                                         <div class="mb-3">
                                             <label class="form-label" for="tipe">Tipe</label>
                                             <select class="form-control" name="tipe" id="tipe">
-                                                <option value="">Pilih Kriteria</option>
+                                                <option value="">Pilih Tipe</option>
                                                 <option value="core" <?= (set_value('tipe') ? set_value('tipe') : $subkriteria->tipe) == 'core' ? 'selected' : '' ?>>Core</option>
                                                 <option value="secondary" <?= (set_value('tipe') ? set_value('tipe') : $subkriteria->tipe) == 'secondary' ? 'selected' : '' ?>>Secondary</option>
                                             </select>
