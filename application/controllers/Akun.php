@@ -12,6 +12,7 @@ class Akun extends CI_Controller
 				'error',
 				'Sesi anda telah berakhir, silahkan login kembali!'
 			);
+
 			redirect('login');
 		}
 

@@ -11,7 +11,17 @@ class Perhitungan extends CI_Controller
 				'error',
 				'Sesi anda telah berakhir, silahkan login kembali!'
 			);
+
 			redirect('login');
+		}
+
+		if (getSession()->level != 'Karyawan') {
+			$this->session->set_flashdata(
+				'error',
+				'Anda tidak memiliki akses!'
+			);
+
+			redirect('dashboard');
 		}
 
 		$this->namaHalaman = 'Penilaian';

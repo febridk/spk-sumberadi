@@ -55,56 +55,58 @@
             <hr class="my-3">
 
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>alternatif">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <div class="ti ti-list fs-2"></div>
-                        </span>
-                        <span class="nav-link-title">
-                            Alternatif
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>kriteria">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <div class="ti ti-file fs-2"></div>
-                        </span>
-                        <span class="nav-link-title">
-                            Kriteria
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>subkriteria">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <div class="ti ti-file-description fs-2"></div>
-                        </span>
-                        <span class="nav-link-title">
-                            Sub Kriteria
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>penilaian">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <div class="ti ti-circle-check fs-2"></div>
-                        </span>
-                        <span class="nav-link-title">
-                            Penilaian
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>perhitungan">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <div class="ti ti-percentage fs-2"></div>
-                        </span>
-                        <span class="nav-link-title">
-                            Perhitungan
-                        </span>
-                    </a>
-                </li>
+                <?php if (getSession()->level == 'Karyawan') { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url() ?>alternatif">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <div class="ti ti-list fs-2"></div>
+                            </span>
+                            <span class="nav-link-title">
+                                Alternatif
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url() ?>kriteria">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <div class="ti ti-file fs-2"></div>
+                            </span>
+                            <span class="nav-link-title">
+                                Kriteria
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url() ?>subkriteria">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <div class="ti ti-file-description fs-2"></div>
+                            </span>
+                            <span class="nav-link-title">
+                                Sub Kriteria
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url() ?>penilaian">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <div class="ti ti-circle-check fs-2"></div>
+                            </span>
+                            <span class="nav-link-title">
+                                Penilaian
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url() ?>perhitungan">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <div class="ti ti-percentage fs-2"></div>
+                            </span>
+                            <span class="nav-link-title">
+                                Perhitungan
+                            </span>
+                        </a>
+                    </li>
+                <?php } ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>hasilakhir">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -120,16 +122,18 @@
             <hr class="my-3">
 
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>pengguna">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <div class="ti ti-user fs-2"></div>
-                        </span>
-                        <span class="nav-link-title">
-                            Pengguna
-                        </span>
-                    </a>
-                </li>
+                <?php if (getSession()->level == 'Kepala Dukuh') { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url() ?>pengguna">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <div class="ti ti-user fs-2"></div>
+                            </span>
+                            <span class="nav-link-title">
+                                Pengguna
+                            </span>
+                        </a>
+                    </li>
+                <?php } ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>akun/ubahpassword">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
