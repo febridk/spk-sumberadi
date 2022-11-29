@@ -155,8 +155,19 @@ table.dataTable thead>tr>th.sorting:after {
     border: 1px solid #e6e7e9;
 }
 
+.theme-dark .card-tabs .nav-tabs .nav-link.active,
 .card-tabs .nav-tabs .nav-link.active {
     border-bottom-color: transparent;
+}
+
+.theme-dark .card-tabs .nav-tabs .nav-link {
+    border: 1px solid rgba(98, 105, 118, .16);
+}
+
+.theme-dark .input-group-text,
+.theme-dark .markdown>table thead th,
+.theme-dark .table thead th {
+    color: #f8fafc;
 }
 
 .nav-tabs .nav-link {
