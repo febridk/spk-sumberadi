@@ -30,9 +30,39 @@
             </div>
             <div class="page-body">
                 <div class="container-xl">
-                    <h2 class="page-title">
-                        Sistem Penunjang Keputusan <br> Penyaluran Dana Desa Pada Desa Bedingin Sumberadi Yogyakarta
-                    </h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Informasi</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-3">
+                                    <div class="page-pretitle">
+                                        Aplikasi
+                                    </div>
+                                    <h2 class="page-title">
+                                        Sistem Penunjang Keputusan <br> Penyaluran Dana Desa Pada Desa Bedingin Sumberadi Yogyakarta
+                                    </h2>
+                                </li>
+                                <li class="mb-3">
+                                    <div class="page-pretitle">
+                                        Nama Pengguna
+                                    </div>
+                                    <h2 class="page-title">
+                                        <?= getSession()->nama_pengguna ?>
+                                    </h2>
+                                </li>
+                                <li>
+                                    <div class="page-pretitle">
+                                        Level Pengguna
+                                    </div>
+                                    <h2 class="page-title">
+                                        <?= getSession()->level ?>
+                                    </h2>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <footer class="footer footer-transparent d-print-none">

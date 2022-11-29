@@ -59,10 +59,10 @@
                                                     </tr>
                                                     <tr>
                                                         <?php foreach (semuaSubKriteria($namaKriteria) as $subkriteria) { ?>
-                                                            <th class="text-center"><?= $subkriteria['nama_subkriteria'] ?></th>
+                                                            <th style="width: 300px;" class="text-center"><?= $subkriteria['nama_subkriteria'] ?></th>
                                                         <?php } ?>
                                                         <?php foreach (semuaSubKriteria($namaKriteria) as $subkriteria) { ?>
-                                                            <th class="text-center"><?= $subkriteria['nama_subkriteria'] ?></th>
+                                                            <th style="width: 300px;" class="text-center"><?= $subkriteria['nama_subkriteria'] ?></th>
                                                         <?php } ?>
                                                     </tr>
                                                 </thead>
@@ -91,13 +91,13 @@
                                     <p>Tabel Bobot</p>
 
                                     <div class="row">
-                                        <div class="col-lg-2">
+                                        <div class="col-lg-3">
                                             <div class="table-responsive mb-4">
                                                 <table class="table table-vcenter table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th class="text-center">Selisih</th>
-                                                            <th class="text-center">Nilai</th>
+                                                            <th style="width: 100px" class="text-center">Selisih</th>
+                                                            <th style="width: 100px" class="text-center">Nilai</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -121,17 +121,17 @@
                                             <table class="table table-vcenter table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-center" style="width: 75px;" rowspan="2">No</th>
+                                                        <th style="width: 75px;" class="text-center" rowspan="2">No</th>
                                                         <th style="width: 300px;" rowspan="2">Alternatif</th>
                                                         <th class="text-center" colspan="2">Sebelum Pembobotan</th>
                                                         <th class="text-center" colspan="2">Setelah Pembobotan</th>
                                                     </tr>
                                                     <tr>
                                                         <?php foreach (semuaSubKriteria($namaKriteria) as $subkriteria) { ?>
-                                                            <th class="text-center"><?= $subkriteria['nama_subkriteria'] ?></th>
+                                                            <th style="width: 300px;" class="text-center"><?= $subkriteria['nama_subkriteria'] ?></th>
                                                         <?php } ?>
                                                         <?php foreach (semuaSubKriteria($namaKriteria) as $subkriteria) { ?>
-                                                            <th class="text-center"><?= $subkriteria['nama_subkriteria'] ?></th>
+                                                            <th style="width: 300px;" class="text-center"><?= $subkriteria['nama_subkriteria'] ?></th>
                                                         <?php } ?>
                                                     </tr>
                                                 </thead>
