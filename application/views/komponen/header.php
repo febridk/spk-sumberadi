@@ -6,6 +6,7 @@
 
 <title><?= $namaHalaman ?> - SPK Sumberadi</title>
 
+<link rel="shortcut icon" href="<?= base_url() ?>assets/static/sleman.jpg">
 <link rel="stylesheet" href="<?= base_url() ?>assets/css/tabler.min.css">
 <link rel="stylesheet" href="<?= base_url() ?>assets/css/tabler-flags.min.css">
 <link rel="stylesheet" href="<?= base_url() ?>assets/css/tabler-payments.min.css">
