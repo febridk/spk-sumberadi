@@ -30,16 +30,9 @@
             </div>
             <div class="page-body">
                 <div class="container-xl">
-                    <div class="row row-deck row-cards">
-                        <div class="col-sm-6 col-lg-3">
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                        </div>
-                    </div>
+                    <h2 class="page-title">
+                        Sistem Penunjang Keputusan <br> Penyaluran Dana Desa Pada Desa Bedingin Sumberadi Yogyakarta
+                    </h2>
                 </div>
             </div>
             <footer class="footer footer-transparent d-print-none">

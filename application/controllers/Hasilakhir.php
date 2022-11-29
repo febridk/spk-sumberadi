@@ -14,12 +14,20 @@ class Hasilakhir extends CI_Controller
 			);
 			redirect('login');
 		}
+
+		$this->namaHalaman = 'Hasil Akhir';
+		$this->urlHalaman = base_url() . 'hasilakhir';
+
+		// model
+		$this->load->model('ModelHasil', 'Hasil');
 	}
 
 	public function index()
 	{
 		$data = [
-			'namaHalaman' => 'Hasil Akhir'
+			'namaHalaman' => $this->namaHalaman,
+			'dataHasil' => $this->Hasil->semua(),
+			'dataTertinggi' => $this->Hasil->dataTertinggi()
 		];
 
 		$this->load->view('hasilakhir/list', $data);
