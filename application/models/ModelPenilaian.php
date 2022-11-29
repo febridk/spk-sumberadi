@@ -15,6 +15,7 @@ class ModelPenilaian extends CI_Model
         $this->db->join('alternatif', 'alternatif.id_alternatif=penilaian.id_alternatif');
         $this->db->join('kriteria', 'kriteria.id_kriteria=penilaian.id_kriteria');
         $this->db->join('subkriteria', 'subkriteria.id_subkriteria=penilaian.id_subkriteria');
+        $this->db->join('bobot', 'bobot.id_bobot=penilaian.id_bobot', 'LEFT');
         if ($kriteria != null) {
             $this->db->where('penilaian.id_kriteria', $kriteria);
         }
