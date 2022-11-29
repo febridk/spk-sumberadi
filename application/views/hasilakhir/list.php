@@ -36,12 +36,14 @@ $no = 1;
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title"><?= $namaHalaman ?></h3>
-                            <div class="card-actions">
-                                <a href="<?= current_url() ?>/cetak" class="btn">
-                                    <i class="ti ti-printer me-2"></i>
-                                    Cetak
-                                </a>
-                            </div>
+                            <?php if (getSession()->level == 'Karyawan') { ?>
+                                <div class="card-actions">
+                                    <a type="button" id="cetak" class="btn d-print-none">
+                                        <i class="ti ti-printer me-2"></i>
+                                        Cetak
+                                    </a>
+                                </div>
+                            <?php } ?>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive mb-4">
@@ -100,6 +102,13 @@ $no = 1;
     </div>
 
     <?php $this->load->view('komponen/footer'); ?>
+
+    <script>
+        $('#cetak').on('click', function() {
+            window.print();
+            return false;
+        })
+    </script>
 </body>
 
 </html>
