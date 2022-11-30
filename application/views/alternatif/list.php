@@ -34,7 +34,7 @@ $no = 1;
             <div class="page-body">
                 <div class="container-xl">
                     <div class="row row-deck row-cards">
-                        <div class="col-lg-6">
+                        <div class="col-lg-8">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title"><?= $namaHalaman ?></h3>
@@ -46,7 +46,7 @@ $no = 1;
                                     </div>
                                 </div>
                                 <div class="table-responsive">
-                                    <table class="table table-vcenter card-table">
+                                    <table class="datatables table table-vcenter card-table">
                                         <thead>
                                             <tr>
                                                 <th>No</th>

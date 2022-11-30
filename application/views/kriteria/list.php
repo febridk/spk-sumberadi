@@ -44,7 +44,7 @@ $no = 1;
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-vcenter card-table">
+                            <table class="datatables table table-vcenter card-table">
                                 <thead>
                                     <tr>
                                         <th>No</th>

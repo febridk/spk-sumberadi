@@ -5,8 +5,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 
 <script src="<?= base_url() ?>assets/js/script.js?v<?= fileatime('assets/js/script.js') ?>"></script>
+
+<script>
+    $('.datatables').DataTable()
+</script>
 
 <?php if ($this->session->get_flash_keys()) { ?>
     <script>

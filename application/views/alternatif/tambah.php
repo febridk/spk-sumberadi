@@ -31,7 +31,7 @@
             <div class="page-body">
                 <div class="container-xl">
                     <div class="row row-deck row-cards">
-                        <div class="col-lg-6">
+                        <div class="col-lg-8">
                             <div class="card">
                                 <div class="card-header justify-content-end flex-row-reverse gap-3">
                                     <h3 class="card-title">Tambah <?= $namaHalaman ?></h3>
