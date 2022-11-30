@@ -29,12 +29,23 @@ class ModelPenilaian extends CI_Model
         return $this->db->get_where($this->table)->result_array();
     }
 
-    public function satuData($id)
+    public function satuData($id = null, $alternatif = null, $kriteria = null, $subkriteria = null)
     {
         $this->db->join('alternatif', 'alternatif.id_alternatif=penilaian.id_alternatif');
         $this->db->join('kriteria', 'kriteria.id_kriteria=penilaian.id_kriteria');
         $this->db->join('subkriteria', 'subkriteria.id_subkriteria=penilaian.id_subkriteria');
-        $this->db->where('penilaian.id_penilaian', $id);
+        if ($id != null) {
+            $this->db->where('penilaian.id_penilaian', $id);
+        }
+        if ($kriteria != null) {
+            $this->db->where('penilaian.id_kriteria', $kriteria);
+        }
+        if ($alternatif != null) {
+            $this->db->where('penilaian.id_alternatif', $alternatif);
+        }
+        if ($subkriteria != null) {
+            $this->db->where('penilaian.id_subkriteria', $subkriteria);
+        }
         return $this->db->get_where($this->table)->row_object();
     }
 

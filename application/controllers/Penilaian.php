@@ -74,20 +74,35 @@ class Penilaian extends CI_Controller
 		if ($this->form_validation->run() == false) {
 			$this->load->view('penilaian/tambah', $data);
 		} else {
-			$dataTambah = [
-				'id_alternatif'		=> $this->input->post('id_alternatif', TRUE),
-				'id_kriteria'		=> $this->input->post('id_kriteria', TRUE),
-				'id_subkriteria'	=> $this->input->post('id_subkriteria', TRUE)
-			];
+			$idAlternatif = $this->input->post('id_alternatif', TRUE);
+			$idKriteria = $this->input->post('id_kriteria', TRUE);
+			$idSubkriteria = $this->input->post('id_subkriteria', TRUE);
 
-			$this->Penilaian->tambah($dataTambah);
+			$periksaData = $this->Penilaian->satuData(null, $idAlternatif, $idKriteria, $idSubkriteria);
 
-			$this->session->set_flashdata(
-				'success',
-				'Data berhasil ditambahkan!'
-			);
+			if ($periksaData) {
+				$dataTambah = [
+					'id_alternatif'		=> $idAlternatif,
+					'id_kriteria'		=> $idKriteria,
+					'id_subkriteria'	=> $idSubkriteria
+				];
 
-			redirect($this->urlHalaman);
+				$this->Penilaian->tambah($dataTambah);
+
+				$this->session->set_flashdata(
+					'success',
+					'Data berhasil ditambahkan!'
+				);
+
+				redirect($this->urlHalaman);
+			} else {
+				$this->session->set_flashdata(
+					'warning',
+					'Data tidak berhasil ditambahkan!'
+				);
+
+				redirect($this->urlHalaman . '/tambah');
+			}
 		}
 	}
 
