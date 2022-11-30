@@ -200,6 +200,7 @@
                                     <p>Rumus Perhitungan Total = (x)%.NCF(i,s,p) + (x)%.NSF(i,s,p)</p>
 
                                     <?php $no = 1; ?>
+
                                     <?php foreach ($dataNilaiAkhir as $namaKriteria => $dataAlternatif) { ?>
                                         <h4><?= $no++ ?>. Aspek <?= $namaKriteria ?></h4>
 
@@ -221,13 +222,27 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php foreach ($dataAlternatif as $perhitunganGAP) { ?>
+
+                                                        <?php
+                                                        $nilaiTotal = 0;
+                                                        foreach ($perhitunganGAP['nilai'] as $nilai) {
+                                                            if ($nilai['nilai_core'] != null) {
+                                                                $nilaiTotal += $nilai['nilai_core'];
+                                                            } else if ($nilai['nilai_secondary'] != null) {
+                                                                $nilaiTotal += $nilai['nilai_secondary'];
+                                                            }
+                                                        }
+                                                        ?>
+
                                                         <tr>
                                                             <td class="text-center"><?= $perhitunganGAP['no'] ?></td>
                                                             <td><?= $perhitunganGAP['nama_alternatif'] ?></td>
                                                             <?php foreach ($perhitunganGAP['nilai'] as $nilai) { ?>
                                                                 <td class="text-center"><?= $nilai['bobot'] ?></td>
                                                             <?php } ?>
-                                                            <td class="text-center"><?= $perhitunganGAP['nilai'][0]['nilai_core'] + $perhitunganGAP['nilai'][1]['nilai_secondary'] ?></td>
+                                                            <td class="text-center">
+                                                                <?= $nilaiTotal ?>
+                                                            </td>
                                                         </tr>
                                                     <?php } ?>
                                                 </tbody>

@@ -262,26 +262,32 @@ class Perhitungan extends CI_Controller
 			$namaAlternatif = $alternatif['nama_alternatif'];
 
 			foreach ($dataKriteria as $kriteria) {
+				$nilaiTotal = 0;
 				$idKriteria = $kriteria['id_kriteria'];
 				$prosentase = $kriteria['prosentase_kriteria'];
 
 				$dataPenilaian = $this->Penilaian->semua($idKriteria, $idAlternatif);
 
-				$nilaiTotal = round($dataPenilaian[0]['nilai_core'] +  $dataPenilaian[1]['nilai_secondary'], 2);
-				$nilaiAkhir = round($nilaiTotal * ($prosentase / 100), 2);
+				foreach ($dataPenilaian as $penilaian) {
+					if ($penilaian['nilai_core'] != null) {
+						$nilaiTotal += $penilaian['nilai_core'];
+					} else if ($penilaian['nilai_secondary'] != null) {
+						$nilaiTotal += $penilaian['nilai_secondary'];
+					}
+				}
+
+				$nilaiTotal = round($nilaiTotal, 2);
+				$nilaiAkhir += round($nilaiTotal * ($prosentase / 100), 2);
 
 				$nilaiKriteria[] = [
-					'nilai_total' => $nilaiTotal,
-					'nilai_akhir' => $nilaiAkhir
+					'nilai_total' => $nilaiTotal
 				];
 			}
-
-			$nilaiAkhir = round($nilaiKriteria[0]['nilai_akhir'] + $nilaiKriteria[1]['nilai_akhir'] + $nilaiKriteria[2]['nilai_akhir'], 2);
 
 			// menyimpan data rangking ke database
 			$dataHasil = [
 				'id_alternatif'	=> $idAlternatif,
-				'nilai'			=> $nilaiAkhir
+				'nilai'			=> round($nilaiAkhir, 2)
 			];
 
 			$periksaHasil = $this->Hasil->satuData(null, $idAlternatif);
@@ -297,7 +303,7 @@ class Perhitungan extends CI_Controller
 				'no'				=> $no++,
 				'nama_alternatif'	=> $namaAlternatif,
 				'kriteria'			=> $nilaiKriteria,
-				'nilai_akhir'		=> $nilaiAkhir,
+				'nilai_akhir'		=> round($nilaiAkhir, 2)
 			];
 		}
 
