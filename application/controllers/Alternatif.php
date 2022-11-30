@@ -35,8 +35,8 @@ class Alternatif extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'namaHalaman' => $this->namaHalaman,
-			'dataAlternatif' => $this->Alternatif->semua()
+			'namaHalaman'		=> $this->namaHalaman,
+			'dataAlternatif'	=> $this->Alternatif->semua()
 		];
 
 		$this->load->view('alternatif/list', $data);
@@ -74,8 +74,8 @@ class Alternatif extends CI_Controller
 
 		if ($periksaId) {
 			$data = [
-				'namaHalaman' => $this->namaHalaman,
-				'alternatif' => $periksaId
+				'namaHalaman'	=> $this->namaHalaman,
+				'alternatif'	=> $periksaId
 			];
 
 			$this->validasi();

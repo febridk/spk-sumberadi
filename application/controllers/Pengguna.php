@@ -35,8 +35,8 @@ class Pengguna extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'namaHalaman' => $this->namaHalaman,
-			'dataPengguna' => $this->Pengguna->semua()
+			'namaHalaman'	=> $this->namaHalaman,
+			'dataPengguna'	=> $this->Pengguna->semua()
 		];
 
 		$this->load->view('pengguna/list', $data);
@@ -77,8 +77,8 @@ class Pengguna extends CI_Controller
 
 		if ($periksaId) {
 			$data = [
-				'namaHalaman' => $this->namaHalaman,
-				'pengguna' => $periksaId
+				'namaHalaman'	=> $this->namaHalaman,
+				'pengguna'		=> $periksaId
 			];
 
 			$this->validasi();

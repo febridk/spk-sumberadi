@@ -26,8 +26,8 @@ class Hasilakhir extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'namaHalaman' => $this->namaHalaman,
-			'dataHasil' => $this->Hasil->semua(),
+			'namaHalaman'	=> $this->namaHalaman,
+			'dataHasil'		=> $this->Hasil->semua(),
 			'dataTertinggi' => $this->Hasil->dataTertinggi()
 		];
 

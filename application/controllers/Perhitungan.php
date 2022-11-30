@@ -91,10 +91,10 @@ class Perhitungan extends CI_Controller
 				}
 
 				$hasilPerhitungan[$namaKriteria][] = [
-					'no' => $no++,
-					'nama_alternatif' => $namaAlternatif,
-					'penilaian' => $dataSebelumGAP,
-					'gap' => $dataSetelahGAP,
+					'no'				=> $no++,
+					'nama_alternatif'	=> $namaAlternatif,
+					'penilaian'			=> $dataSebelumGAP,
+					'gap'				=> $dataSetelahGAP
 				];
 			}
 		}
@@ -140,10 +140,10 @@ class Perhitungan extends CI_Controller
 				}
 
 				$pembobotan[$namaKriteria][] = [
-					'no' => $no++,
-					'nama_alternatif' => $namaAlternatif,
-					'nilai_gap' => $nilaiGAP,
-					'nilai_bobot' => $nilaiBobot,
+					'no'				=> $no++,
+					'nama_alternatif'	=> $namaAlternatif,
+					'nilai_gap'			=> $nilaiGAP,
+					'nilai_bobot'		=> $nilaiBobot
 				];
 			}
 		}
@@ -176,9 +176,9 @@ class Perhitungan extends CI_Controller
 				}
 
 				$pembobotan[$namaKriteria][] = [
-					'no' => $no++,
-					'nama_alternatif' => $namaAlternatif,
-					'nilai' => $nilai
+					'no'				=> $no++,
+					'nama_alternatif'	=> $namaAlternatif,
+					'nilai'				=> $nilai
 				];
 			}
 		}
@@ -237,9 +237,9 @@ class Perhitungan extends CI_Controller
 				}
 
 				$hasilPerhitungan[$namaKriteria][] = [
-					'no' => $no++,
-					'nama_alternatif' => $namaAlternatif,
-					'nilai' => $nilai
+					'no'				=> $no++,
+					'nama_alternatif'	=> $namaAlternatif,
+					'nilai'				=> $nilai
 				];
 			}
 		}

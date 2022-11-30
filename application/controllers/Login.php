@@ -40,8 +40,8 @@ class Login extends CI_Controller
 
                     // membuat session login
                     $data = [
-                        'username' => $periksaPengguna->username,
-                        'nama' => $periksaPengguna->nama_pengguna
+                        'username'  => $periksaPengguna->username,
+                        'nama'      => $periksaPengguna->nama_pengguna
                     ];
 
                     $this->session->set_userdata($data);

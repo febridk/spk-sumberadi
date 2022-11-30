@@ -35,8 +35,8 @@ class Kriteria extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'namaHalaman' => $this->namaHalaman,
-			'dataKriteria' => $this->Kriteria->semua()
+			'namaHalaman'	=> $this->namaHalaman,
+			'dataKriteria'	=> $this->Kriteria->semua()
 		];
 
 		$this->load->view('kriteria/list', $data);
@@ -77,8 +77,8 @@ class Kriteria extends CI_Controller
 
 		if ($periksaId) {
 			$data = [
-				'namaHalaman' => $this->namaHalaman,
-				'kriteria' => $periksaId
+				'namaHalaman'	=> $this->namaHalaman,
+				'kriteria'		=> $periksaId
 			];
 
 			$this->validasi();

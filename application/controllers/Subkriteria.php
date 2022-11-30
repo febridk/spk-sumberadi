@@ -36,8 +36,8 @@ class Subkriteria extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'namaHalaman' => $this->namaHalaman,
-			'dataSubkriteria' => $this->Subkriteria->semua()
+			'namaHalaman'		=> $this->namaHalaman,
+			'dataSubkriteria'	=> $this->Subkriteria->semua()
 		];
 
 		$this->load->view('subkriteria/list', $data);
@@ -46,8 +46,8 @@ class Subkriteria extends CI_Controller
 	public function tambah()
 	{
 		$data = [
-			'namaHalaman' => $this->namaHalaman,
-			'dataKriteria' => $this->Kriteria->semua()
+			'namaHalaman'	=> $this->namaHalaman,
+			'dataKriteria'	=> $this->Kriteria->semua()
 		];
 
 		$this->validasi();
@@ -80,9 +80,9 @@ class Subkriteria extends CI_Controller
 
 		if ($periksaId) {
 			$data = [
-				'namaHalaman' => $this->namaHalaman,
-				'dataKriteria' => $this->Kriteria->semua(),
-				'subkriteria' => $periksaId
+				'namaHalaman'	=> $this->namaHalaman,
+				'dataKriteria'	=> $this->Kriteria->semua(),
+				'subkriteria'	=> $periksaId
 			];
 
 			$this->validasi();

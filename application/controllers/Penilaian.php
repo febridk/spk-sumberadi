@@ -38,7 +38,7 @@ class Penilaian extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'namaHalaman' => 'Penilaian',
+			'namaHalaman'	=> 'Penilaian',
 			'dataPenilaian'	=> $this->Penilaian->semua(),
 		];
 
