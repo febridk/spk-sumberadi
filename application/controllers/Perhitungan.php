@@ -153,7 +153,7 @@ class Perhitungan extends CI_Controller
 
 	private function pengelompokkan()
 	{
-		$pembobotan = [];
+		$pengelompokkan = [];
 
 		$dataKriteria = $this->Kriteria->semua();
 		$dataAlternatif = $this->Alternatif->semua();
@@ -171,11 +171,11 @@ class Perhitungan extends CI_Controller
 				$dataPenilaian = $this->Penilaian->semua($idKriteria, $idAlternatif);
 
 				foreach ($dataPenilaian as $penilaian) {
-					// data nilai sebelum perhitungan gap
+					// pengelompokkan factor
 					$nilai[] = [$penilaian['nilai']];
 				}
 
-				$pembobotan[$namaKriteria][] = [
+				$pengelompokkan[$namaKriteria][] = [
 					'no'				=> $no++,
 					'nama_alternatif'	=> $namaAlternatif,
 					'nilai'				=> $nilai
@@ -183,7 +183,7 @@ class Perhitungan extends CI_Controller
 			}
 		}
 
-		return $pembobotan;
+		return $pengelompokkan;
 	}
 
 	private function perhitungan_nilai_akhir()
