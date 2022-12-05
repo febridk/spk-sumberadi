@@ -46,9 +46,8 @@ class ModelHasil extends CI_Model
         return $this->db->update($this->table, $data);
     }
 
-    public function hapus($id)
+    public function kosongkan()
     {
-        $this->db->where('id_hasil', $id);
-        return $this->db->delete($this->table);
+        $this->db->truncate($this->table);
     }
 }

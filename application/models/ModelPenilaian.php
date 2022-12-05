@@ -65,4 +65,9 @@ class ModelPenilaian extends CI_Model
         $this->db->where('id_penilaian', $id);
         return $this->db->delete($this->table);
     }
+
+    public function kosongkan()
+    {
+        $this->db->truncate($this->table);
+    }
 }

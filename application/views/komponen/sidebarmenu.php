@@ -50,11 +50,9 @@
                         </span>
                     </a>
                 </li>
-            </ul>
 
-            <hr class="my-3">
+                <hr class="my-3">
 
-            <ul class="navbar-nav">
                 <?php if (getSession()->level == 'Karyawan') { ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url() ?>alternatif">
@@ -117,11 +115,9 @@
                         </span>
                     </a>
                 </li>
-            </ul>
 
-            <hr class="my-3">
+                <hr class="my-3">
 
-            <ul class="navbar-nav">
                 <?php if (getSession()->level == 'Kepala Dukuh') { ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url() ?>pengguna">
@@ -133,6 +129,19 @@
                             </span>
                         </a>
                     </li>
+                <?php } else if (getSession()->level == 'Karyawan') { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#resetdata">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <div class="ti ti-eraser fs-2"></div>
+                            </span>
+                            <span class="nav-link-title">
+                                Reset Data
+                            </span>
+                        </a>
+                    </li>
+
+                    <hr class="my-3">
                 <?php } ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>akun/ubahpassword">
@@ -158,3 +167,5 @@
         </div>
     </div>
 </aside>
+
+<?php include(VIEWPATH . 'komponen/modalreset.php') ?>
