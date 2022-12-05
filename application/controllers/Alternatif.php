@@ -111,12 +111,19 @@ class Alternatif extends CI_Controller
 		$periksaId = $this->Alternatif->satuData($id);
 
 		if ($periksaId) {
-			$this->Alternatif->hapus($id);
+			$hapus = $this->Alternatif->hapus($id);
 
-			$this->session->set_flashdata(
-				'success',
-				'Data berhasil dihapus!'
-			);
+			if ($hapus) {
+				$this->session->set_flashdata(
+					'success',
+					'Data berhasil dihapus!'
+				);
+			} else {
+				$this->session->set_flashdata(
+					'warning',
+					'Data tidak berhasil dihapus!'
+				);
+			}
 
 			redirect($this->urlHalaman);
 		} else {

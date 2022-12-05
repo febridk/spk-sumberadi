@@ -117,12 +117,19 @@ class Pengguna extends CI_Controller
 		$periksaId = $this->Pengguna->satuData($id);
 
 		if ($periksaId) {
-			$this->Pengguna->hapus($id);
+			$hapus = $this->Pengguna->hapus($id);
 
-			$this->session->set_flashdata(
-				'success',
-				'Data berhasil dihapus!'
-			);
+			if ($hapus) {
+				$this->session->set_flashdata(
+					'success',
+					'Data berhasil dihapus!'
+				);
+			} else {
+				$this->session->set_flashdata(
+					'warning',
+					'Data tidak berhasil dihapus!'
+				);
+			}
 
 			redirect($this->urlHalaman);
 		} else {

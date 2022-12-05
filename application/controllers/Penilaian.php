@@ -153,12 +153,19 @@ class Penilaian extends CI_Controller
 		$periksaId = $this->Penilaian->satuData($id);
 
 		if ($periksaId) {
-			$this->Penilaian->hapus($id);
+			$hapus = $this->Penilaian->hapus($id);
 
-			$this->session->set_flashdata(
-				'success',
-				'Data berhasil dihapus!'
-			);
+			if ($hapus) {
+				$this->session->set_flashdata(
+					'success',
+					'Data berhasil dihapus!'
+				);
+			} else {
+				$this->session->set_flashdata(
+					'warning',
+					'Data tidak berhasil dihapus!'
+				);
+			}
 
 			redirect($this->urlHalaman);
 		} else {

@@ -117,12 +117,19 @@ class Kriteria extends CI_Controller
 		$periksaId = $this->Kriteria->satuData($id);
 
 		if ($periksaId) {
-			$this->Kriteria->hapus($id);
+			$hapus = $this->Kriteria->hapus($id);
 
-			$this->session->set_flashdata(
-				'success',
-				'Data berhasil dihapus!'
-			);
+			if ($hapus) {
+				$this->session->set_flashdata(
+					'success',
+					'Data berhasil dihapus!'
+				);
+			} else {
+				$this->session->set_flashdata(
+					'warning',
+					'Data tidak berhasil dihapus!'
+				);
+			}
 
 			redirect($this->urlHalaman);
 		} else {
