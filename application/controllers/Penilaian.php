@@ -80,7 +80,7 @@ class Penilaian extends CI_Controller
 
 			$periksaData = $this->Penilaian->satuData(null, $idAlternatif, $idKriteria, $idSubkriteria);
 
-			if ($periksaData) {
+			if ($periksaData == null) {
 				$dataTambah = [
 					'id_alternatif'		=> $idAlternatif,
 					'id_kriteria'		=> $idKriteria,
